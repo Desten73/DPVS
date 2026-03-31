@@ -2,7 +2,7 @@
 - Project name: DPVS
 - Unity version: Unity 2022.3.62f3
 - Active game object:
-  - Name: 5 - Foreground
+  - Name: File Testing
   - Tag: Untagged
-  - Layer: UI
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
