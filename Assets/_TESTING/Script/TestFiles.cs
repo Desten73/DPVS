@@ -8,7 +8,8 @@ public class TestFiles : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Run());
+        if (fileName != null)
+            StartCoroutine(Run());
     }
 
     IEnumerator Run()
