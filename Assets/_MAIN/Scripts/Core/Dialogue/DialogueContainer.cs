@@ -9,7 +9,7 @@ namespace DIALOGUE
         // содержит текст названия и диалога
         public GameObject root;
         // имя активного персонажа
-        public TextMeshProUGUI nameText;
+        public NameContainer nameContainer;
         // текст диалога персонажа
         public TextMeshProUGUI dialogueText;
     }

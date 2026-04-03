@@ -22,7 +22,7 @@ public class TextArchitect
 
     // 3 метода. ћгновенный, пишуща€ машинка, сокрытие
     public enum BuildMethod { instant, typewriter, fade}
-    public BuildMethod buildMethod = BuildMethod.typewriter;
+    public BuildMethod buildMethod = BuildMethod.fade;
 
     public Color textColor { get { return tmpro.color; } set { tmpro.color = value; } }
 
