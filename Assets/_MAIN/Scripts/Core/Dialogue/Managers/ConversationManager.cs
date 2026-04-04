@@ -62,7 +62,7 @@ namespace DIALOGUE
         IEnumerator Line_RunDialogue(DIALOGUE_LINE line)
         {
             if (line.hasSpeaker)
-                dialogueSystem.ShowSpeakerName(line.speaker);
+                dialogueSystem.ShowSpeakerName(line.speaker.dispayName);
 
             // создаем диалог
             yield return BuildLineSegments(line.dialogue);
