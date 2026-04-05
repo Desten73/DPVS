@@ -56,23 +56,35 @@ namespace DIALOGUE
                 // Отработка команд
                 if (line.hasCommands)
                     yield return Line_RunCommands(line);
+
+                // Ждем ввод данных от пользователя
+                if (line.hasDialogue)
+                    yield return WaitForUserInput();
             }
         }
 
         IEnumerator Line_RunDialogue(DIALOGUE_LINE line)
         {
+            // Отображение или сокрытие имени говорящего
             if (line.hasSpeaker)
-                dialogueSystem.ShowSpeakerName(line.speaker.dispayName);
+                dialogueSystem.ShowSpeakerName(line.speakerData.dispayName);
 
             // создаем диалог
-            yield return BuildLineSegments(line.dialogue);
+            yield return BuildLineSegments(line.dialogueData);
 
-            // Ждем ввод данных от пользователя
-            yield return WaitForUserInput();
         }
         IEnumerator Line_RunCommands(DIALOGUE_LINE line)
         {
-            Debug.Log(line.commands);
+            List<DL_COMMAND_DATA.Command> commands = line.commandsData.commands;
+
+            foreach (DL_COMMAND_DATA.Command command in commands)
+            {
+                if (command.waitForCompletion)
+                    yield return CommandManager.instance.Execute(command.name, command.arguments);
+                else
+                    CommandManager.instance.Execute(command.name, command.arguments);
+            }
+
             yield return null;
         }
 

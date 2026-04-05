@@ -20,7 +20,7 @@ namespace TESTING
         {
             List<string> lines = FileManager.ReadTextAsset(fileToRead);
 
-            //for (int i = 0; i < lines.Count; i++) 
+            //for (int i = 0; i < lines.Count; i++)
             //{
             //    string line = lines[i];
 
@@ -28,15 +28,10 @@ namespace TESTING
             //        continue;
 
             //    DIALOGUE_LINE dl = DialogueParser.Parse(line);
-
-            //    Debug.Log($"{dl.speaker.name} " +
-            //        $"as [{(dl.speaker.castName != string.Empty ? dl.speaker.castName : dl.speaker.name)}]" +
-            //        $"at {dl.speaker.castPosition}");
-
-            //    List<(int l, string ex)> expr = dl.speaker.CastExpressions;
-            //    for (int c = 0; c < expr.Count; c++)
+            //    for (int c = 0; c < dl.commandsData.commands.Count; c++)
             //    {
-            //        Debug.Log($"[Layer[{expr[c].l}] = '{expr[c].ex}']");
+            //        DL_COMMAND_DATA.Command command = dl.commandsData.commands[c];
+            //        Debug.Log($"Command [{c}] '{command.name}' has arguments [{string.Join(", ", command.arguments)}]");
             //    }
             //}
 
