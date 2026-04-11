@@ -17,6 +17,21 @@ namespace CHARACTERS
             instance = this;
         }
 
+        public CharacterConfigData GetCharacterConfig(string characterName)
+        {
+            return config.GetConfig(characterName);
+        }
+
+        public Character GetCharacter(string characterName, bool createIfDoueNotExist = false)
+        {
+            if (characters.ContainsKey(characterName.ToLower()))
+                return characters[characterName.ToLower()];
+            else if (createIfDoueNotExist)
+                return CreateCharacter(characterName);
+
+            return null;
+        }
+
         public Character CreateCharacter(string characterName)
         {
             if (characters.ContainsKey(characterName.ToLower()))
@@ -52,17 +67,17 @@ namespace CHARACTERS
             switch (config.characterType)
             {
                 case Character.CharacterType.Text:
-                    return new Character_Text(info.name);
+                    return new Character_Text(info.name, config);
 
                 case Character.CharacterType.Sprite:
                 case Character.CharacterType.SpriteSheet:
-                    return new Character_Sprite(info.name);
+                    return new Character_Sprite(info.name, config);
 
                 case Character.CharacterType.Live2D:
-                    return new Character_Live2D(info.name);
+                    return new Character_Live2D(info.name, config);
 
                 case Character.CharacterType.Model3D:
-                    return new Character_Model3D(info.name);
+                    return new Character_Model3D(info.name, config);
 
                 default:
                     return null;

@@ -25,11 +25,13 @@ namespace DIALOGUE
             userPromt = true;
         }
 
-        public void StartConversation(List<string> conversation)
+        public Coroutine StartConversation(List<string> conversation)
         {
             StopConversation();
 
             process = dialogueSystem.StartCoroutine(RunningConversation(conversation));
+
+            return process;
         }
 
         public void StopConversation()
@@ -43,7 +45,7 @@ namespace DIALOGUE
 
         IEnumerator RunningConversation(List<string> conversation)
         {
-            for(int i = 0; i< conversation.Count; i++)
+            for (int i = 0; i< conversation.Count; i++)
             {
                 if (string.IsNullOrWhiteSpace(conversation[i]))
                     continue;

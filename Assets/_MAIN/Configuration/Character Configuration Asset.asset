@@ -20,13 +20,13 @@ MonoBehaviour:
     dialogueColor: {r: 1, g: 1, b: 1, a: 0}
     nameFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     dialogueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  - name: "\u042D\u043B\u043B\u0435\u043D"
+  - name: Elen
     alias: "\u044D"
     characterType: 0
     nameColor: {r: 0.89433956, g: 0.2413029, b: 0.40530753, a: 0}
     dialogueColor: {r: 0.6226415, g: 0.36357072, b: 0.14919896, a: 0}
-    nameFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    dialogueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    nameFont: {fileID: 0}
+    dialogueFont: {fileID: 0}
   - name: "\u0411\u044D\u043D\u0434\u0436\u0430\u043C\u0438\u043D"
     alias: "\u0431"
     characterType: 0

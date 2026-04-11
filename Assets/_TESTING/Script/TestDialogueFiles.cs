@@ -19,7 +19,7 @@ namespace TESTING
         void StartConversation()
         {
             List<string> lines = FileManager.ReadTextAsset(fileToRead);
-
+            //List<string> lines = new List<string> { };
             //for (int i = 0; i < lines.Count; i++)
             //{
             //    string line = lines[i];
