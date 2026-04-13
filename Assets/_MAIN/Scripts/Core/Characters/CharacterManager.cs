@@ -22,11 +22,11 @@ namespace CHARACTERS
             return config.GetConfig(characterName);
         }
 
-        public Character GetCharacter(string characterName, bool createIfDoueNotExist = false)
+        public Character GetCharacter(string characterName, bool createIfDousNotExist = false)
         {
             if (characters.ContainsKey(characterName.ToLower()))
                 return characters[characterName.ToLower()];
-            else if (createIfDoueNotExist)
+            else if (createIfDousNotExist)
                 return CreateCharacter(characterName);
 
             return null;

@@ -19,8 +19,8 @@ namespace CHARACTERS
 
                 if (string.Equals(characterName, data.name.ToLower()) || string.Equals(characterName, data.alias.ToLower()))
                     return data.Copy();
+                
             }
-            Debug.Log("return default config!");
             return CharacterConfigData.Default;
         }
     }

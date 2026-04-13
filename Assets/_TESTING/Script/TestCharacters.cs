@@ -23,7 +23,7 @@ namespace TESTING
         {
             Character Elen = CharacterManager.instance.CreateCharacter("Elen");
             Character Stella = CharacterManager.instance.CreateCharacter("Стелла");
-            Character Ben = CharacterManager.instance.CreateCharacter("Бэнджаминd");
+            Character Ben = CharacterManager.instance.CreateCharacter("Бэнджамин");
             List<string> lines = new List<string>()
             {
                 "Hi",
