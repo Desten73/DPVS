@@ -13,7 +13,7 @@ namespace TESTING
         public TMP_FontAsset tempFont;
         void Start()
         {
-            //Character Stella = CharacterManager.instance.CreateCharacter("Стелла");
+            //Character Stella = CharacterManager.instance.CreateCharacter("Generic");
             //Character Elen = CharacterManager.instance.CreateCharacter("Эллен");
             //Character Stella2 = CharacterManager.instance.CreateCharacter("Стелла");
             //Character Adam = CharacterManager.instance.CreateCharacter("Адам");
@@ -23,39 +23,16 @@ namespace TESTING
 
         IEnumerator Test()
         {
-            Character Elen = CharacterManager.instance.CreateCharacter("Elen");
-            Character Stella = CharacterManager.instance.CreateCharacter("Стелла");
-            Character Ben = CharacterManager.instance.CreateCharacter("Бэнджамин");
-            List<string> lines = new List<string>()
-            {
-                "Hi",
-                "My name Elen",
-                "What are you name",
-                "Oyy,{wa 1} nice to meet you"
-            };
-            yield return Elen.Say(lines);
+            yield return new WaitForSeconds(1f);
+            Character Raelin = CharacterManager.instance.CreateCharacter("Raelin");
 
-            Elen.SetNameColor(Color.red);
-            Elen.SetDialogueColor(Color.blue);
-            Elen.SetNameFont(tempFont);
-            Elen.SetDialogueFont(tempFont);
-            yield return Elen.Say(lines);
-            Elen.ResetConfigurationData();
-            yield return Elen.Say(lines);
+            //yield return new WaitForSeconds(1f);
+            //yield return Raelin.Hide();
 
-            lines = new List<string>()
-            {
-                "Меня зовут Адам.",
-                "Проверим еще пару строк{c} Здесь.",
-                "Вроде бы все окей..."
-            };
+            yield return new WaitForSeconds(0.5f);
+            yield return Raelin.Show();
 
-            yield return Ben.Say(lines);
-
-            yield return Stella.Say("Это строка, которую я хочу сказать.{a} Всего лишь обычная фраза.");
-
-            Debug.Log("Filished");
-
+            yield return Raelin.Say("Привет!");
         }
 
         // Update is called once per frame

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Character Configuration Asset
   m_EditorClassIdentifier: 
   characters:
-  - name: "\u0421\u0442\u0435\u043B\u043B\u0430"
-    alias: "\u0441"
+  - name: Raelin
+    alias: r
     characterType: 1
-    nameColor: {r: 1, g: 1, b: 1, a: 1}
-    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameColor: {r: 0.9547169, g: 0.6547919, b: 0.30082586, a: 1}
+    dialogueColor: {r: 1, g: 0.88977444, b: 0.435849, a: 1}
     nameFont: {fileID: 11400000, guid: 952908395fc490c4ba0c20e3b7e926f1, type: 2}
     dialogueFont: {fileID: 11400000, guid: 952908395fc490c4ba0c20e3b7e926f1, type: 2}
   - name: Elen
