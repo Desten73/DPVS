@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using CHARACTERS;
 using DIALOGUE;
+using TMPro;
 
 namespace TESTING
 {
     public class TestCharacters : MonoBehaviour
     {
         // Start is called before the first frame update
+        public TMP_FontAsset tempFont;
         void Start()
         {
             //Character Stella = CharacterManager.instance.CreateCharacter("Стелла");
@@ -31,6 +33,14 @@ namespace TESTING
                 "What are you name",
                 "Oyy,{wa 1} nice to meet you"
             };
+            yield return Elen.Say(lines);
+
+            Elen.SetNameColor(Color.red);
+            Elen.SetDialogueColor(Color.blue);
+            Elen.SetNameFont(tempFont);
+            Elen.SetDialogueFont(tempFont);
+            yield return Elen.Say(lines);
+            Elen.ResetConfigurationData();
             yield return Elen.Say(lines);
 
             lines = new List<string>()
