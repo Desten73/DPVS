@@ -26,7 +26,7 @@ namespace TESTING
         IEnumerator Test()
         {
             Character guard1 = CreateCharacter("Guard1 as Generic");
-            Character guard2 = CreateCharacter("Raelin");
+            Character guard2 = CreateCharacter("Guard2 as Generic");
             Character guard3 = CreateCharacter("Female Student 2");
 
             guard1.Show();
