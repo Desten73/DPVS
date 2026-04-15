@@ -11,6 +11,8 @@ namespace TESTING
     {
         // Start is called before the first frame update
         public TMP_FontAsset tempFont;
+
+        private Character CreateCharacter(string name) => CharacterManager.instance.CreateCharacter(name);
         void Start()
         {
             //Character Stella = CharacterManager.instance.CreateCharacter("Generic");
@@ -23,16 +25,15 @@ namespace TESTING
 
         IEnumerator Test()
         {
-            yield return new WaitForSeconds(1f);
-            Character Raelin = CharacterManager.instance.CreateCharacter("Raelin");
+            Character guard1 = CreateCharacter("Guard1 as Generic");
+            Character guard2 = CreateCharacter("Guard2 as Generic");
+            Character guard3 = CreateCharacter("Guard3 as Generic");
 
-            //yield return new WaitForSeconds(1f);
-            //yield return Raelin.Hide();
+            guard1.Show();
+            guard2.Show();
+            guard3.Show();
 
-            yield return new WaitForSeconds(0.5f);
-            yield return Raelin.Show();
-
-            yield return Raelin.Say("Привет!");
+            yield return null;
         }
 
         // Update is called once per frame
