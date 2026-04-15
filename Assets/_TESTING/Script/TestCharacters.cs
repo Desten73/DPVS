@@ -26,12 +26,21 @@ namespace TESTING
         IEnumerator Test()
         {
             Character guard1 = CreateCharacter("Guard1 as Generic");
-            Character guard2 = CreateCharacter("Guard2 as Generic");
-            Character guard3 = CreateCharacter("Guard3 as Generic");
+            Character guard2 = CreateCharacter("Raelin");
+            Character guard3 = CreateCharacter("Female Student 2");
 
             guard1.Show();
             guard2.Show();
             guard3.Show();
+
+            guard1.SetPosition(Vector2.zero);
+            guard2.SetPosition(new Vector2(0.5f, 0.5f));
+            guard3.SetPosition(Vector2.one);
+
+            yield return guard1.MoveToPosition(Vector2.one, smooth: true);
+            yield return guard1.MoveToPosition(Vector2.zero, smooth: true);
+
+
 
             yield return null;
         }
