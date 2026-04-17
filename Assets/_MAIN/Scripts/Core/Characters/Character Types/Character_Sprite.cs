@@ -1,18 +1,105 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
+using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CHARACTERS
 {
     public class Character_Sprite : Character
     {
+        private const string SPRITE_RENDERERD_PARENT_NAME = "Renderers";
+        private const string SPRITESHEET_DEFAULT_SHEETNAME = "Default";
+        private const char SPRITESHEET_TEX_SPRITE_DELIMITTER = '-';
         private CanvasGroup rootCG => root.GetComponent<CanvasGroup>();
-        public Character_Sprite(string name, CharacterConfigData config, GameObject prefab) : base(name, config, prefab)
+
+        public List<CharacterSpriteLayer> layers = new List<CharacterSpriteLayer>();
+
+        private string artAssetsDirectory = "";
+
+        public override bool isVisible
         {
-            rootCG.alpha = 0;
-            //Show();
-            Debug.Log($"Создание Sprite персонажа '{name}'");
+            get { return isRevealing || rootCG.alpha == 1; }
+            set { rootCG.alpha = value ? 1 : 0; }
+        }
+
+        public Character_Sprite(string name, CharacterConfigData config, GameObject prefab, string rootAssetsFolder) : base(name, config, prefab)
+        {
+            rootCG.alpha = Character.ENABLE_ON_START ? 1 : 0;
+            artAssetsDirectory = rootAssetsFolder + "/Images";
+
+            GetLayers();
+
+            Debug.Log($"Создание Sprite персонажа '{name}' rootAssetsFolder = {rootAssetsFolder}");
+        }
+
+        private void GetLayers()
+        {
+            if (animator == null)
+                return;
+            Transform rendererRoot = animator.transform.Find(SPRITE_RENDERERD_PARENT_NAME);
+
+            if (rendererRoot == null)
+                return;
+
+            for (int i = 0; i < rendererRoot.transform.childCount; i++)
+            {
+                Transform child = rendererRoot.transform.GetChild(i);
+
+                Image rendererImage = child.GetComponentInChildren<Image>();
+
+                if (rendererImage != null)
+                {
+                    CharacterSpriteLayer layer = new CharacterSpriteLayer(rendererImage, i);
+                    layers.Add(layer);
+                    child.name = $"Layer: {i}";
+                }
+            }
+        }
+
+        public void SetSprite(Sprite sprite, int layer = 0)
+        {
+            layers[layer].SetSprite(sprite);
+        }
+
+        public Sprite GetSprite(string spriteName)
+        {
+            if (config.characterType == CharacterType.SpriteSheet)
+            {
+                string[] data = spriteName.Split(SPRITESHEET_TEX_SPRITE_DELIMITTER);
+                Sprite[] spriteArray = new Sprite[0];
+
+                if (data.Length == 2)
+                {
+                    string texturename = data[0];
+                    spriteName = data[1];
+                    spriteArray = Resources.LoadAll<Sprite>($"{artAssetsDirectory}/{texturename}");
+                    Debug.LogWarning($"Персонаж '{name}' не имеет спрайт листов с именем '{texturename}'");
+                }
+                else
+                {
+                    spriteArray = Resources.LoadAll<Sprite>($"{artAssetsDirectory}/{SPRITESHEET_DEFAULT_SHEETNAME}");
+                    Debug.LogWarning($"Персонаж '{name}' не имеет дефолтных спрайт листов с именем '{SPRITESHEET_DEFAULT_SHEETNAME}'");
+                }
+
+                if (spriteArray.Length == 0)
+                    Debug.LogWarning($"spriteArray вернулся пустым");
+
+                return Array.Find(spriteArray, sprite => sprite.name == spriteName);
+            }
+            else
+            {
+                return Resources.Load<Sprite>($"{artAssetsDirectory}/{spriteName}");
+            }
+        }
+
+        public Coroutine TransitionSprite(Sprite sprite, int layer = 0, float speed = 1)
+        {
+            CharacterSpriteLayer spriteLayer = layers[layer];
+
+            return spriteLayer.TransitionSprite(sprite, speed);
         }
 
         public override IEnumerator ShowingOrHiding(bool show)

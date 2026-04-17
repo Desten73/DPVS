@@ -25,9 +25,9 @@ namespace TESTING
 
         IEnumerator Test()
         {
-            Character guard1 = CreateCharacter("Guard1 as Generic");
-            Character guard2 = CreateCharacter("Guard2 as Generic");
-            Character guard3 = CreateCharacter("Female Student 2");
+            Character_Sprite guard1 = CreateCharacter("Guard1 as Generic") as Character_Sprite;
+            Character_Sprite guard2 = CreateCharacter("Raelin") as Character_Sprite;
+            Character guard3 = CreateCharacter("Generic");
 
             guard1.Show();
             guard2.Show();
@@ -38,9 +38,15 @@ namespace TESTING
             guard3.SetPosition(Vector2.one);
 
             yield return guard1.MoveToPosition(Vector2.one, smooth: true);
+
+            Sprite s1 = guard2.GetSprite("Default-Raelin_1");
+            Sprite s2 = guard2.GetSprite("Default-Raelin_6");
+            guard2.TransitionSprite(s1, 0);
+            guard2.TransitionSprite(s2, 1);
             yield return guard1.MoveToPosition(Vector2.zero, smooth: true);
 
 
+            //yield return new WaitForSeconds(1);
 
             yield return null;
         }
