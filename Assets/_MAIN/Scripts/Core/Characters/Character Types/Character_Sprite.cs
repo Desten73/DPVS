@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
+using System.Linq;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,7 +33,7 @@ namespace CHARACTERS
 
             GetLayers();
 
-            Debug.Log($"Создание Sprite персонажа '{name}' rootAssetsFolder = {rootAssetsFolder}");
+            Debug.Log($"Создание Sprite персонажа '{name}'");
         }
 
         private void GetLayers()
@@ -76,12 +77,10 @@ namespace CHARACTERS
                     string texturename = data[0];
                     spriteName = data[1];
                     spriteArray = Resources.LoadAll<Sprite>($"{artAssetsDirectory}/{texturename}");
-                    Debug.LogWarning($"Персонаж '{name}' не имеет спрайт листов с именем '{texturename}'");
                 }
                 else
                 {
                     spriteArray = Resources.LoadAll<Sprite>($"{artAssetsDirectory}/{SPRITESHEET_DEFAULT_SHEETNAME}");
-                    Debug.LogWarning($"Персонаж '{name}' не имеет дефолтных спрайт листов с именем '{SPRITESHEET_DEFAULT_SHEETNAME}'");
                 }
 
                 if (spriteArray.Length == 0)
@@ -115,6 +114,31 @@ namespace CHARACTERS
 
             co_revealing = null;
             co_hiding = null;
+        }
+
+        public override void SetColor(Color color)
+        {
+            base.SetColor(color);
+
+            foreach (CharacterSpriteLayer layer in layers)
+            {
+                layer.SetColor(color);
+            }
+        }
+
+        public override IEnumerator ChangingColor(Color color, float speed)
+        {
+            foreach (CharacterSpriteLayer layer in layers)
+                layer.TransitionColor(color, speed);
+
+            yield return null;
+
+            while (layers.Any(l => l.isChangingColor))
+            {
+                yield return null;
+            }
+
+            co_changingColor = null;
         }
     }
 }

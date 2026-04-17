@@ -43,10 +43,15 @@ namespace TESTING
             Sprite s2 = guard2.GetSprite("Default-Raelin_6");
             guard2.TransitionSprite(s1, 0);
             guard2.TransitionSprite(s2, 1);
+            yield return guard2.TransitionColor(Color.red, 0.3f);
+            yield return guard2.TransitionColor(Color.blue, 0.3f);
+            yield return guard2.TransitionColor(Color.white);
+            yield return new WaitForSeconds(1);
+
+
             yield return guard1.MoveToPosition(Vector2.zero, smooth: true);
 
 
-            //yield return new WaitForSeconds(1);
 
             yield return null;
         }
