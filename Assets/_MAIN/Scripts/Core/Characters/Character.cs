@@ -25,6 +25,7 @@ namespace CHARACTERS
             color.g * UNHIGHLIGHTED_DARKEN_STRENGTH, color.b * UNHIGHLIGHTED_DARKEN_STRENGTH, color.a);
         public bool highlighted { get; protected set; } = true;
         protected bool facingLeft = DEFAULT_ORIENTATION_IS_FACING_LEFT;
+        public int priority { get; protected set; }
 
         protected CharacterManager characterManager => CharacterManager.instance;
         public DialogueSystem dialogueSystem => DialogueSystem.instance;
@@ -266,6 +267,15 @@ namespace CHARACTERS
         {
             Debug.Log("Ќельз€ перевернуть данный тип персонажа!");
             yield return null;
+        }
+
+        public void SetPriority(int priority, bool autoSortCharactersOnUI = true)
+        {
+            this.priority = priority;
+
+            if (autoSortCharactersOnUI)
+                characterManager.SortCharacters();
+
         }
 
         public enum CharacterType

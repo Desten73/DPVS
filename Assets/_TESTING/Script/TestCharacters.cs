@@ -31,6 +31,19 @@ namespace TESTING
             guard1.Show();
             guard2.Show();
             //guard3.Show();
+            Character_Sprite guard4 = CreateCharacter("Raelin") as Character_Sprite;
+            Character_Sprite guard3 = CreateCharacter("Guard3 as Generic") as Character_Sprite;
+            guard1.SetPriority(1);
+            guard2.SetPriority(2);
+            guard3.SetPriority(3);
+            guard4.SetPriority(4);
+            guard3.Show();
+            guard4.Show();
+            yield return new WaitForSeconds(1);
+            CharacterManager.instance.SortCharacters(new string[] { "Guard2", "Guard3", "Raelin" });
+            yield return new WaitForSeconds(1);
+
+            CharacterManager.instance.SortCharacters();
 
             guard1.SetPosition(Vector2.zero);
             guard2.SetPosition(new Vector2(0.5f, 0.5f));
