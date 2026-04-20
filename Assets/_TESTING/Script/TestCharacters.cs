@@ -58,6 +58,8 @@ namespace TESTING
             yield return guard1.FaceRight(0.3f);
             yield return guard1.MoveToPosition(Vector2.one, smooth: true);
 
+            guard2.Animate("Hop");
+
             yield return new WaitForSeconds(1);
             yield return guard2.UnHighlight();
             yield return new WaitForSeconds(1);
@@ -83,9 +85,11 @@ namespace TESTING
             //yield return new WaitForSeconds(1);
 
 
+            guard1.Animate("Shiver", true);
             yield return guard1.MoveToPosition(Vector2.zero, smooth: true);
             yield return guard1.Flip(0.5f);
             yield return guard1.TransitionColor(Color.gray);
+            guard1.Animate("Shiver", false);
 
 
 
