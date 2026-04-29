@@ -48,3 +48,31 @@ MonoBehaviour:
     dialogueColor: {r: 0.54286224, g: 0.816109, b: 0.9622642, a: 1}
     nameFont: {fileID: 11400000, guid: 952908395fc490c4ba0c20e3b7e926f1, type: 2}
     dialogueFont: {fileID: 11400000, guid: 952908395fc490c4ba0c20e3b7e926f1, type: 2}
+  - name: Ren
+    alias: ren
+    characterType: 3
+    nameColor: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 1}
+    dialogueColor: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 1}
+    nameFont: {fileID: 11400000, guid: 952908395fc490c4ba0c20e3b7e926f1, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 952908395fc490c4ba0c20e3b7e926f1, type: 2}
+  - name: Koharu
+    alias: ko
+    characterType: 3
+    nameColor: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 1}
+    dialogueColor: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 1}
+    nameFont: {fileID: 11400000, guid: 952908395fc490c4ba0c20e3b7e926f1, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 952908395fc490c4ba0c20e3b7e926f1, type: 2}
+  - name: Natomi
+    alias: nat
+    characterType: 3
+    nameColor: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 1}
+    dialogueColor: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 1}
+    nameFont: {fileID: 11400000, guid: 952908395fc490c4ba0c20e3b7e926f1, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 952908395fc490c4ba0c20e3b7e926f1, type: 2}
+  - name: Rice
+    alias: ri
+    characterType: 3
+    nameColor: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 1}
+    dialogueColor: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 1}
+    nameFont: {fileID: 11400000, guid: 952908395fc490c4ba0c20e3b7e926f1, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 952908395fc490c4ba0c20e3b7e926f1, type: 2}
