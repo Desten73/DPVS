@@ -308,6 +308,11 @@ namespace CHARACTERS
             animator.SetTrigger(ANIMATION_REFRESH_TRIGGER);
         }
 
+        public virtual void OnSort(int sortingIndex)
+        {
+            return;
+        }
+
         public enum CharacterType
         {
             Text,

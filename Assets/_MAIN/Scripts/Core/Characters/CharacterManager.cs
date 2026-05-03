@@ -157,6 +157,7 @@ namespace CHARACTERS
             {
                 Debug.Log($"{character.name} priority is {character.priority}");
                 character.root.SetSiblingIndex(i++);
+                character.OnSort(i);
             }
         }
 
